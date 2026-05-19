@@ -1,19 +1,9 @@
 <?php
 class Producto
 {
-    /* /////////////////////////////////////////
-        //  Atributos de la clase Producto
-        */ /////////////////////////////////
-
     private string $nombre;
     private float $precio;
     private int $stock = 0;
-
-    ////////////////////////////////////////////
-
-    /* /////////////////////////////////////////
-        //  Metodo constructor de la clase Producto
-        */ ////////////////////////////////////////
 
     public function __construct(string $nombre, float $precio, int $stock)
     {
@@ -22,40 +12,35 @@ class Producto
         $this->stock = $stock;
     }
 
-    /* ////////////////////////////////////////////
-        //  Metodos para la clase Producto
-        */ ////////////////////////////////////////
+    public function getNombre(): string
+    {
+        return $this->nombre;
+    }
 
-        public function getNombre(): string
-        {
-            return $this->nombre;
-        }
+    public function getPrecio(): float
+    {
+        return $this->precio;
+    }
 
-        public function getPrecio(): float
-        {
-            return $this->precio;
-        }
-
-        public function getStock(): int
-        {
-            return $this->stock;
-        }
+    public function getStock(): int
+    {
+        return $this->stock;
+    }
 
     public function venderProducto(int $cantidad): void
     {
         if ($cantidad <= 0) {
-            echo "<div class='container mt-4'>
-                    <p class='text-danger'>La cantidad a vender debe ser mayor que cero.</p>
-                </div>";
+            echo "<div class='alert alert-danger'>
+                    <strong>Error:</strong> La cantidad a vender debe ser mayor que cero.
+                  </div>";
             return;
         }
 
         if ($cantidad > $this->stock) {
-            echo "<div class='container mt-4'>
-                    <p class='text-danger'>Stock insuficiente para vender $cantidad unidades de $this->nombre.
-                    <br>
-                    <strong>Stock disponible:</strong> $this->stock</p>
-                </div>";
+            echo "<div class='alert alert-danger'>
+                    <strong>Stock insuficiente</strong> para vender $cantidad unidades de <em>$this->nombre</em>.<br>
+                    <span>Stock disponible: $this->stock</span>
+                  </div>";
             return;
         }
 
@@ -65,13 +50,12 @@ class Producto
     public function reponerProducto(int $cantidad): void
     {
         if ($cantidad <= 0) {
-            echo "<div class='container mt-4'>
-                    <p class='text-danger'>La cantidad a reponer debe ser mayor que cero.</p>
-                </div>";
+            echo "<div class='alert alert-danger'>
+                    <strong>Error:</strong> La cantidad a reponer debe ser mayor que cero.
+                  </div>";
             return;
         }
 
         $this->stock += $cantidad;
-        
     }
 }
