@@ -9,6 +9,12 @@ $reloj->ticTac(60); // Avanzamos 59 segundos para avanzar un minuto
 $reloj->ticTac(0); // Avanzamos 0 segundos
 $reloj->ticTac(60 * 59); // Avanzamos 60 segundos para avanzar un minuto
 $reloj->ticTac(59); // Avanzamos 59 segundos para avanzar un minuto
+$reloj->ticTac(60); // Avanzamos 59 segundos para avanzar un minuto
+$reloj->ticTac(0); // Avanzamos 0 segundos
+$reloj->ticTac(60 * 59); // Avanzamos 60 segundos para avanzar un minuto
+$reloj->ticTac(59); // Avanzamos 59 segundos para avanzar un minuto
+$reloj->ticTac(60 * 59); // Avanzamos 60 segundos para avanzar un minuto
+$reloj->ticTac(59); // Avanzamos 59 segundos para avanzar un minuto
 
 $horaActual = $reloj->mostrarHora(); 
 
