@@ -1,45 +1,37 @@
 <?php
 
-// 1. Definición de la Interfaz
 interface MetodoPago {
     public function procesarPago(string $monto);
 }
 
-// 2. Implementación de las Clases
 
 class PagoMovil implements MetodoPago {
     public function procesarPago(string $monto) {
-        echo "Procesando pago de $$monto mediante Pago Móvil... [Verificando teléfono y CI]\n";
+        echo "Procesando pago de $$monto mediante <span style='color: red'>Pago Móvil</span>... <br> <span>[Verificando teléfono y CI]</span>\n" . "<br>";
     }
 }
 
 class Transferencia implements MetodoPago {
     public function procesarPago(string $monto) {
-        echo "Procesando pago de $$monto mediante Transferencia Bancaria... [Esperando confirmación de fondos]\n";
+        echo "Procesando pago de $$monto mediante <span style='color: red'>Transferencia Bancaria</span>... <br> <span>[Esperando confirmación de fondos]</span>\n" . "<br>";
     }
 }
 
 class PayPal implements MetodoPago {
     public function procesarPago(string $monto) {
-        echo "Procesando pago de $$monto mediante PayPal... [Conectando con la API segura]\n";
+        echo "Procesando pago de $$monto mediante <span style='color: red'>PayPal</span>... <br> <span>[Conectando con la API segura]</span>\n" . "<br>";
     }
 }
 
-// 3. Función Externa (Polimorfismo en acción)
 function finalizarTransaccion(MetodoPago $metodo, string $monto) {
-    echo "Iniciando transacción...\n";
-    // No importa qué clase sea, sabemos con certeza que tiene este método
+    echo "<span style='color: #000000'>Iniciando transacción...</span>\n" . "<br>";
+
     $metodo->procesarPago($monto);
-    echo "Transacción finalizada con éxito.\n";
+    echo "<span style='color: #219652'>Transacción finalizada con éxito.</span>\n" . "<br>";
     echo "-------------------------------------------\n";
 }
 
-// 4. Pruebas de ejecución
 
-// Instanciamos los diferentes métodos de pago
 $pagoMovil = new PagoMovil();
 $transferencia = new Transferencia();
 $paypal = new PayPal();
-
-// Monto simulado para la inscripción o compra
-$montoTotal = 150;
