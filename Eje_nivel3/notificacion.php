@@ -16,7 +16,6 @@ class NotificacionEmail extends Notificacion
 {
     private string $correoDestino;
 
-    #[Override]
     public function __construct(string $mensaje, string $correoDestino)
     {
         parent::__construct($mensaje);
@@ -34,8 +33,6 @@ class NotificacionEmail extends Notificacion
 class NotificacionSMS extends Notificacion
 {
     private string $numeroTelefono;
-
-    #[Override]
     public function __construct(string $mensaje, string $numeroTelefono)
     {
         parent::__construct($mensaje);
@@ -54,14 +51,12 @@ class NotificacionPush extends Notificacion
 {
     private string $idDispositivo;
 
-    #[Override]
     public function __construct(string $mensaje, string $idDispositivo)
     {
         parent::__construct($mensaje);
         $this->idDispositivo = $idDispositivo;
     }
 
-    #[Override]
     public function enviar(): string
     {
         return "Enviando una alerta push a {$this->idDispositivo} con el mensaje: {$this->mensaje}";
