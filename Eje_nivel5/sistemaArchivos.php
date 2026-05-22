@@ -13,7 +13,7 @@ class componenteBase
 
     public function detalles(): string
     {
-        return $this->tamaño . " " .  $this->nombre;
+        return $this->tamaño . "Kb" . " " .  $this->nombre;
     }
 }
 
@@ -34,15 +34,23 @@ class Archivo extends componenteBase
 
 class ArchivoImagen extends Archivo 
 {
-    private string $resolucion; 
-    public function __construct(string $nombre, string $tamaño, string $extension, string $resolucion)
+    private int $ancho; 
+    private int $largo;
+    public function __construct(string $nombre, string $tamaño, string $extension, int $ancho, int $largo)
     {
         parent::__construct($nombre, $tamaño, $extension);
-        $this->resolucion = $resolucion;
+        $this->ancho = $ancho;
+        $this->largo = $largo;
     }
 
     public function detalles(): string
     {
-        return parent::detalles() . " " . $this->resolucion;
+        return parent::detalles() . " " . $this->ancho ."x". $this->largo ."px";
     }
 }
+
+echo "--- Probando el Sistema de Archivos ---\n\n" . "<br><br>";
+
+$miFoto = new ArchivoImagen("vacaciones_2026", 2400, ".jpg", 1920, 1080);
+echo $miFoto->detalles(); 
+
